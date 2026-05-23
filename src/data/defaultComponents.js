@@ -72,10 +72,10 @@ export const defaultComponentData = {
     label: 'V',
     value: 5,
     unit: 'V',
-    rotation: 90, // vertical with positive on top
+    rotation: 0, // vertical: symbol rotates so terminals go top/bottom
     terminals: [
-      { id: 'pos', x: 0, y: -24 },
-      { id: 'neg', x: 0, y: 24 }
+      { id: 'pos', x: -20, y: 0 }, // becomes top (y=-20) after 90° rotation
+      { id: 'neg', x: 20, y: 0 }   // becomes bottom (y=+20) after 90° rotation
     ]
   },
   [COMPONENT_TYPES.CURRENT_SOURCE]: {
@@ -83,10 +83,10 @@ export const defaultComponentData = {
     label: 'I',
     value: 1,
     unit: 'A',
-    rotation: 90,
+    rotation: 0, // vertical: symbol rotates so terminals go top/bottom
     terminals: [
-      { id: 'pos', x: -20, y: 0 },
-      { id: 'neg', x: 20, y: 0 }
+      { id: 'pos', x: -20, y: 0 }, // becomes top (y=-20) after 90° rotation
+      { id: 'neg', x: 20, y: 0 }   // becomes bottom (y=+20) after 90° rotation
     ]
   },
   [COMPONENT_TYPES.SWITCH]: {
