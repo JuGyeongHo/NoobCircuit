@@ -72,7 +72,7 @@ export const defaultComponentData = {
     label: 'V',
     value: 5,
     unit: 'V',
-    rotation: 0, // vertical: symbol rotates so terminals go top/bottom
+    rotation: 90, // vertical: symbol rotates so terminals go top/bottom
     terminals: [
       { id: 'pos', x: -20, y: 0 }, // becomes top (y=-20) after 90° rotation
       { id: 'neg', x: 20, y: 0 }   // becomes bottom (y=+20) after 90° rotation
@@ -83,7 +83,7 @@ export const defaultComponentData = {
     label: 'I',
     value: 1,
     unit: 'A',
-    rotation: 0, // vertical: symbol rotates so terminals go top/bottom
+    rotation: -90, // vertical: symbol rotates so terminals go top/bottom
     terminals: [
       { id: 'pos', x: -20, y: 0 }, // becomes top (y=-20) after 90° rotation
       { id: 'neg', x: 20, y: 0 }   // becomes bottom (y=+20) after 90° rotation
@@ -103,9 +103,9 @@ export const defaultComponentData = {
   [COMPONENT_TYPES.GROUND]: {
     type: COMPONENT_TYPES.GROUND,
     label: 'GND',
-    rotation: 0, // ground oriented with vertical line downwards
+    rotation: 90, // ground oriented with vertical line downwards
     terminals: [
-      { id: 't1', x: 0, y: 0 }
+      { id: 't1', x: -20, y: 0 }
     ]
   }
 };

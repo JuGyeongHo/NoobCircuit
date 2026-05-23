@@ -319,51 +319,43 @@ export const CircuitCanvas = () => {
             );
           })}
 
-          {/* Label - counter-rotates to stay upright */}
-          {(() => {
-            const rot = comp.rotation || 0;
-            const type = comp.type;
-
-            if (type === COMPONENT_TYPES.VOLTAGE_SOURCE || type === COMPONENT_TYPES.CURRENT_SOURCE) {
-              // Place label to the right of the symbol circle (r=12, terminal at x=20)
-              // counter-rotate around the label anchor point (28, 0) so text stays upright
-              return (
-                <text
-                  x="28"
-                  y="0"
-                  className="component-label"
-                  textAnchor="start"
-                  dominantBaseline="middle"
-                  transform={`rotate(${-rot}, 0, 0)`}
-                >
-                  <tspan x="28" dy="-0.5em">{comp.label}</tspan>
-                  {comp.value !== undefined && comp.value !== '' ? (
-                    <tspan x="28" dy="1.2em">{formatDisplayValue(comp.value, comp.unit)}</tspan>
-                  ) : null}
-                </text>
-              );
-            }
-
-            const labelY = type === COMPONENT_TYPES.GROUND ? 30 : -28;
-
-            return (
-              <text
-                x="0"
-                y={labelY}
-                className="component-label"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                transform={`rotate(${-rot}, 0, ${labelY})`}
-              >
-                <tspan x="0" dy="-0.4em">{comp.label}</tspan>
-                {comp.value !== undefined && comp.value !== '' ? (
-                  <tspan x="0" dy="1.2em">{formatDisplayValue(comp.value, comp.unit)}</tspan>
-                ) : null}
-              </text>
-            );
-          })()}
-
-
+          {comp.type === COMPONENT_TYPES.GROUND ? (
+            <text
+              x="0"
+              y="30"
+              className="component-label"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              transform={`rotate(${-(comp.rotation || 0)})`}
+            >
+              <tspan x="0" dy="-0.4em">{comp.label}</tspan>
+              {comp.value !== undefined ? (
+                <tspan x="0" dy="1.2em">{formatDisplayValue(comp.value, comp.unit)}</tspan>
+              ) : null}
+            </text>
+          ) : (comp.type === COMPONENT_TYPES.VOLTAGE_SOURCE || comp.type === COMPONENT_TYPES.CURRENT_SOURCE) ? (
+            <text
+              x="0"
+              y="0"
+              className="component-label"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              transform={`translate(0, 30) rotate(${-(comp.rotation || 90)})`}
+            >
+              <tspan x="0" dy="-0.4em">{comp.label}</tspan>
+              <tspan x="0" dy="1.2em">{comp.value !== undefined ? formatDisplayValue(comp.value, comp.unit) : ''}</tspan>
+            </text>
+          ) : (
+            <text
+              x="0"
+              y="-22"
+              className="component-label"
+              textAnchor="middle"
+              transform={`rotate(${-(comp.rotation || 0)})`}
+            >
+              {comp.label} {comp.value !== undefined ? `(${formatDisplayValue(comp.value, comp.unit)})` : ''}
+            </text>
+          )}
 
         </g>
       );
