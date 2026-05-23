@@ -148,11 +148,11 @@ export const VoltageSourceSymbol = () => (
     <line x1="12" y1="0" x2="20" y2="0" {...commonProps} />
 
     {/* + */}
-    <line x1="-5" y1="0" x2="-1" y2="0" {...commonProps} />
+    <line x1="-6" y1="0" x2="-1" y2="0" {...commonProps} />
     <line x1="-3" y1="-2" x2="-3" y2="2" {...commonProps} />
 
     {/* - */}
-    <line x1="2" y1="0" x2="6" y2="0" {...commonProps} />
+    <line x1="4" y1="0" x2="6" y2="0" {...commonProps} />
 
   </g>
 );
@@ -180,7 +180,7 @@ export const CurrentSourceSymbol = () => (
     <line x1="-6" y1="0" x2="4" y2="0" {...commonProps} />
 
     <polygon
-      points="4,0 0,-4 0,4"
+      points="6,0 0,-6 0,6"
       fill="#111827"
       stroke="none"
     />

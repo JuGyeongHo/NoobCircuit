@@ -118,9 +118,8 @@ export const PropertiesPanel = () => {
           <label className="form-label">Rotation</label>
           <select 
             className="form-select" 
-            value={selectedComponent.rotation} 
+            value={selectedComponent.rotation ?? 0} 
             onChange={(e) => handleChange('rotation', e.target.value)}
-            disabled={selectedComponent.type === COMPONENT_TYPES.VOLTAGE_SOURCE || selectedComponent.type === COMPONENT_TYPES.CURRENT_SOURCE}
           >
             <option value="0">0° (Horizontal)</option>
             <option value="90">90° (Vertical)</option>
